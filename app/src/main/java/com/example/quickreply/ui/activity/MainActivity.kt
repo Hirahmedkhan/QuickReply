@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.quickreply.R
+import com.example.quickreply.domain.WhatsAppReplyService
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +18,10 @@ class MainActivity : AppCompatActivity() {
         if (!isNotificationServiceEnabled()) {
             Toast.makeText(this, "Please enable notification access", Toast.LENGTH_SHORT).show()
             startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS))
-        }
+            triggerWhatsAppReplyService()
+
+        }else{
+            Toast.makeText(this, "Enabled", Toast.LENGTH_SHORT).show()        }
     }
 
     private fun isNotificationServiceEnabled(): Boolean {
@@ -25,5 +29,10 @@ class MainActivity : AppCompatActivity() {
         val enabledNotificationListeners =
             Settings.Secure.getString(contentResolver, "enabled_notification_listener")
         return enabledNotificationListeners?.contains(packageName) == true
+    }
+
+    private fun triggerWhatsAppReplyService(){
+        val intent = Intent(this, WhatsAppReplyService::class.java)
+        startService(intent)
     }
 }
