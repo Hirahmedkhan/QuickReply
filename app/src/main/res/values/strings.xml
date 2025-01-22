@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">QuickReply</string>
     <string name="accessibility_description" />
+    <string name="open_notification_settings">Open Notification Settings</string>
 </resources>

@@ -7,23 +7,24 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.quickreply.R
+import com.example.quickreply.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding : ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        if (!isNotificationServiceEnabled()) {
-            Toast.makeText(this, "Please enable notification access", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS))
+        binding.button.setOnClickListener {
+            openNotificationSettings()
         }
     }
 
-    private fun isNotificationServiceEnabled(): Boolean {
-        val contentResolver = applicationContext.contentResolver
-        val enabledNotificationListeners =
-            Settings.Secure.getString(contentResolver, "enabled_notification_listener")
-        return enabledNotificationListeners?.contains(packageName) == true
+    private fun openNotificationSettings() {
+        val intent = Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS")
+        startActivity(intent)
     }
 }
