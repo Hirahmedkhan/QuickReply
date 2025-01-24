@@ -21,8 +21,13 @@ class WhatsAppNotificationService : NotificationListenerService() {
             val message = extras.getString("android.text") ?: return
             val senderName = extras.getString("android.title") ?: return
 
-            Log.d("WhatsAppService", "onNotificationPosted: $message")
-            Log.d("WhatsAppService", "onNotificationPosted: $senderName")
+            Log.d("WhatsAppService", "message: $message")
+            Log.d("WhatsAppService", "Sender Name: $senderName")
+
+            if (senderName == "You") {
+                Log.d("WhatsAppService", "Skipping auto-reply for self message.")
+                return
+            }
 
             val currentTime = System.currentTimeMillis()
             val lastReplyTime = lastMessageTimestamps[senderName] ?: 0L
@@ -33,9 +38,14 @@ class WhatsAppNotificationService : NotificationListenerService() {
             }
 
             Log.d("WhatsAppService", "New WhatsApp message detected")
+
+            Log.d("WhatsAppService", "Before sending reply:  ")
             lastMessageTimestamps[senderName] = currentTime
 
             sendReplyToNotification(sbn, "Hello, Auto Reply Message")
+            cancelNotification(sbn.key)
+
+            Log.d("WhatsAppService", "after sending reply:  ")
         }
     }
 
@@ -56,7 +66,10 @@ class WhatsAppNotificationService : NotificationListenerService() {
         RemoteInput.addResultsToIntent(action.remoteInputs, intent, bundle)
 
         try {
-            action.actionIntent.send(this, 0, intent)
+            action.actionIntent.send(this, PendingIntent.FLAG_UPDATE_CURRENT, intent)
+
+//            cancelNotification(action.notification)
+
         } catch (e: PendingIntent.CanceledException) {
             Log.e("WhatsappService", "Failed to send reply: ${e.message}")
         }
