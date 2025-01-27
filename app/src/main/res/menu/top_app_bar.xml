@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/notifications"
+        android:contentDescription="@string/notifications"
+        android:icon="@drawable/notifications"
+        android:title="@string/notifications"
+        android:tint="@color/white"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/sendDirectMessage"
+        android:contentDescription="@string/notifications"
+        android:icon="@drawable/send"
+        android:title="@string/notifications"
+        android:tint="@color/white"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_more"
+        android:title="@string/more"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/info"
+        android:title="@string/info"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/settings"
+        android:title="@string/settings"
+        app:showAsAction="never"
+        />
+
+</menu>

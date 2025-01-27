@@ -12,7 +12,7 @@ import android.util.Log
 class WhatsAppNotificationService : NotificationListenerService() {
 
     private val lastMessageTimestamps = mutableMapOf<String, Long>()
-    private val REPLY_DELAY_MS = 5000L
+    private val messageDelayTime = 5000L
 
     override fun onNotificationPosted(sbn: StatusBarNotification?) {
 
@@ -32,20 +32,15 @@ class WhatsAppNotificationService : NotificationListenerService() {
             val currentTime = System.currentTimeMillis()
             val lastReplyTime = lastMessageTimestamps[senderName] ?: 0L
 
-            if (currentTime - lastReplyTime < REPLY_DELAY_MS) {
+            if (currentTime - lastReplyTime < messageDelayTime) {
                 Log.d("WhatsAppService", "AutoReply skipped for $senderName due to delay")
                 return
             }
 
             Log.d("WhatsAppService", "New WhatsApp message detected")
-
-            Log.d("WhatsAppService", "Before sending reply:  ")
             lastMessageTimestamps[senderName] = currentTime
 
             sendReplyToNotification(sbn, "Hello, Auto Reply Message")
-            cancelNotification(sbn.key)
-
-            Log.d("WhatsAppService", "after sending reply:  ")
         }
     }
 
@@ -67,8 +62,6 @@ class WhatsAppNotificationService : NotificationListenerService() {
 
         try {
             action.actionIntent.send(this, PendingIntent.FLAG_UPDATE_CURRENT, intent)
-
-//            cancelNotification(action.notification)
 
         } catch (e: PendingIntent.CanceledException) {
             Log.e("WhatsappService", "Failed to send reply: ${e.message}")
