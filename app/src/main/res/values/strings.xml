@@ -8,4 +8,8 @@
     <string name="more">More</string>
     <string name="info">info</string>
     <string name="settings">Settings</string>
+    <string name="menu">MENU</string>
+    <string name="home">HOME</string>
+    <string name="contacts">CONTACTS</string>
+    <string name="statistics">STATISTICS</string>
 </resources>
