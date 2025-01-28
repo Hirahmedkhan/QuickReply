@@ -2,5 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#FF0000</color>
+    <color name="green">#00FF00</color>
+    <color name="blue">#0000FF</color>
+    <color name="pink">#FFC0CB</color>
+    <color name="lightgreen">#F2FFE6</color>
+    <color name="hexgreen">#F5FBE3</color>
     <color name="whatsappdarkgreen">#075E54</color>
+    <color name="whatsappghtgreen">#DCF8C6 </color>
 </resources>

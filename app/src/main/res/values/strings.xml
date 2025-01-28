@@ -12,4 +12,10 @@
     <string name="home">HOME</string>
     <string name="contacts">CONTACTS</string>
     <string name="statistics">STATISTICS</string>
+    <string name="quick_reply">Quick Reply</string>
+    <string name="on">ON</string>
+    <string name="quick_reply_text">Quick Reply text</string>
+    <string name="message_to_be_sent_as_auto_reply">Message to be sent as auto reply</string>
+    <string name="button_description">Button Description</string>
+    <string name="select_your_text">Select your text</string>
 </resources>
