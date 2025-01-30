@@ -2,7 +2,7 @@ package com.example.quickreply.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.quickreply.R
@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.i("Lifecycle", "Created!")
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         window.statusBarColor = ContextCompat.getColor(this, R.color.whatsappdarkgreen)
@@ -31,15 +32,31 @@ class MainActivity : AppCompatActivity() {
                 3 -> tab.text = "Statistics"
             }
         }.attach()
-
-        binding.button.setOnClickListener {
-            openNotificationSettings()
-        }
     }
 
-    private fun openNotificationSettings() {
-        val intent = Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS")
-        startActivity(intent)
+    override fun onStart() {
+        super.onStart()
+        Log.i("Lifecycle", "Starting..")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i("Lifecycle", "Paused")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("Lifecycle", "Resumed")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i("Lifecycle", "Stopping...")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("Lifecycle", "Destroyed!")
     }
 
 }

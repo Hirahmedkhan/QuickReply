@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/hexgreen"
     android:padding="10dp"
     tools:context=".ui.fragment.HomeFragment">
 
@@ -51,7 +50,7 @@
                 android:id="@+id/switchOption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_90sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/tvONOFF"
@@ -61,24 +60,14 @@
     </androidx.cardview.widget.CardView>
 
 
-
-
-
-
-
-
-
-
-
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:background="@color/lightgreen"
-        app:cardElevation="@dimen/_8sdp"
         app:cardCornerRadius="@dimen/_8sdp"
+        app:cardElevation="@dimen/_8sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView1">
@@ -126,11 +115,11 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_190sdp"
-        android:background="@color/lightgreen"
-        app:cardElevation="@dimen/_8sdp"
-        app:cardCornerRadius="@dimen/_8sdp"
+        android:layout_height="@dimen/_390sdp"
         android:layout_marginTop="@dimen/_10sdp"
+        android:background="@color/lightgreen"
+        app:cardCornerRadius="@dimen/_8sdp"
+        app:cardElevation="@dimen/_8sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cardView2">
@@ -143,9 +132,9 @@
                 android:id="@+id/tvSelectMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/select_your_text"
                 android:layout_marginStart="@dimen/_13sdp"
                 android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/select_your_text"
                 app:layout_constraintBottom_toTopOf="@+id/rvTextForAutoReply"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -153,12 +142,13 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvTextForAutoReply"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_190sdp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                tools:listitem="@layout/home_rv_item_view_layout"
                 android:foregroundGravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvSelectMessage"
-                android:layout_marginTop="@dimen/_10sdp"/>
+                app:layout_constraintTop_toBottomOf="@+id/tvSelectMessage" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
