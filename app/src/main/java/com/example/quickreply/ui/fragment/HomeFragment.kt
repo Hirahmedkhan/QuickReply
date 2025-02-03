@@ -6,6 +6,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickreply.HomeFragmentAdapter
+import com.example.quickreply.MessageViewModel
 import com.example.quickreply.R
 import com.example.quickreply.databinding.FragmentHomeBinding
 
@@ -13,12 +14,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var adapter: HomeFragmentAdapter
+    private lateinit var messageViewModel: MessageViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
 
-        val messageList = listOf(
+        val messageList = mutableListOf(
             "Hey there! I'm currently unavailable. I'll get back to you soon. 😊",
             "Thanks for reaching out! I'm away right now but will respond as soon as possible.",
             "Hello! I'm a bit busy at the moment. I'll reply as soon as I can. 🚀",
@@ -30,11 +32,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             "Hey! I'm taking a short break. I'll message you back once I'm available.",
             "I'm currently offline. I'll reply when I'm back online. 🌐"
         )
-        adapter = HomeFragmentAdapter(messageList)
+        adapter = HomeFragmentAdapter(messageList) { message, position ->
+
+        }
+
         binding.rvTextForAutoReply.adapter = adapter
         binding.rvTextForAutoReply.layoutManager = LinearLayoutManager(requireContext())
-
-
 
         binding.switchOption.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {

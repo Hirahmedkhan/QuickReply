@@ -1,4 +1,4 @@
-package com.example.quickreply.data.service
+package com.example.quickreply.service
 
 import android.app.Notification
 import android.app.PendingIntent

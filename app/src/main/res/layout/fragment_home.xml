@@ -77,25 +77,44 @@
             android:layout_height="match_parent"
             android:padding="@dimen/_1sdp">
 
-            <TextView
-                android:id="@+id/tvcard2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_13sdp"
-                android:text="@string/quick_reply_text"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+<!--            <TextView-->
+<!--                android:id="@+id/tvcard2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/_13sdp"-->
+<!--                android:text="@string/quick_reply_text"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
-            <TextView
-                android:id="@+id/displayAutoReplyMessage"
-                android:layout_width="wrap_content"
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/displayAutoReplyMessage"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/_13sdp"-->
+<!--                android:layout_marginBottom="@dimen/_5sdp"-->
+<!--                android:hint="@string/message_to_be_sent_as_auto_reply"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent" />
+-->
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textFieldCard2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_13sdp"
-                android:layout_marginBottom="@dimen/_5sdp"
-                android:hint="@string/message_to_be_sent_as_auto_reply"
+                android:hint="Quick Reply Text"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtTextSetReplyMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="wrap_content"
@@ -105,7 +124,7 @@
                 android:text=""
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
