@@ -11,37 +11,42 @@ import android.util.Log
 
 class WhatsAppNotificationService : NotificationListenerService() {
 
+    companion object {
+        private const val WHATSAPP = "com.whatsapp"
+    }
+
     private val lastMessageTimestamps = mutableMapOf<String, Long>()
     private val messageDelayTime = 5000L
 
     override fun onNotificationPosted(sbn: StatusBarNotification?) {
+        if (sbn == null) return
+        if (sbn.packageName != WHATSAPP) return
 
-        if (sbn != null && sbn.packageName == "com.whatsapp") {
-            val extras = sbn.notification.extras
-            val message = extras.getString("android.text") ?: return
-            val senderName = extras.getString("android.title") ?: return
 
-            Log.d("WhatsAppService", "message: $message")
-            Log.d("WhatsAppService", "Sender Name: $senderName")
+        val extras = sbn.notification.extras
+        val message = extras.getString("android.text") ?: return
+        val senderName = extras.getString("android.title") ?: return
 
-            if (senderName == "You") {
-                Log.d("WhatsAppService", "Skipping auto-reply for self message.")
-                return
-            }
+        Log.d("WhatsAppService", "message: $message")
+        Log.d("WhatsAppService", "Sender Name: $senderName")
 
-            val currentTime = System.currentTimeMillis()
-            val lastReplyTime = lastMessageTimestamps[senderName] ?: 0L
-
-            if (currentTime - lastReplyTime < messageDelayTime) {
-                Log.d("WhatsAppService", "AutoReply skipped for $senderName due to delay")
-                return
-            }
-
-            Log.d("WhatsAppService", "New WhatsApp message detected")
-            lastMessageTimestamps[senderName] = currentTime
-
-            sendReplyToNotification(sbn, "Hello, Auto Reply Message")
+        if (senderName == "You") {
+            Log.d("WhatsAppService", "Skipping auto-reply for self message.")
+            return
         }
+
+        val currentTime = System.currentTimeMillis()
+        val lastReplyTime = lastMessageTimestamps[senderName] ?: 0L
+
+        if (currentTime - lastReplyTime < messageDelayTime) {
+            Log.d("WhatsAppService", "AutoReply skipped for $senderName due to delay")
+            return
+        }
+
+        Log.d("WhatsAppService", "New WhatsApp message detected")
+        lastMessageTimestamps[senderName] = currentTime
+
+        sendReplyToNotification(sbn, "Hello, Auto Reply Message")
     }
 
     private fun sendReplyToNotification(sbn: StatusBarNotification, replyText: String) {

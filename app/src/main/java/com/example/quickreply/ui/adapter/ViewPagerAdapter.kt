@@ -1,4 +1,4 @@
-package com.example.quickreply
+package com.example.quickreply.ui.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

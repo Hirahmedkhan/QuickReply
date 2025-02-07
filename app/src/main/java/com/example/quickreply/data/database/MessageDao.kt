@@ -1,4 +1,4 @@
-package com.example.quickreply
+package com.example.quickreply.data.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

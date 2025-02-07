@@ -56,10 +56,11 @@ dependencies {
     implementation(libs.androidx.viewpager2)
 
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
 
     implementation("com.google.dagger:hilt-android:2.51.1")
     kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+    implementation ("androidx.fragment:fragment-ktx:1.8.5")
 }
 
 kapt {

@@ -1,6 +1,7 @@
-package com.example.quickreply
+package com.example.quickreply.data.repository
 
 import androidx.lifecycle.LiveData
+import com.example.quickreply.data.database.MessageDao
 import com.example.quickreply.data.model.Message
 
 class MessageRepository(private val messageDao: MessageDao) {
