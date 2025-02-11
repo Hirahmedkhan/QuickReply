@@ -13,6 +13,9 @@ interface MessageDao {
     @Insert
     suspend fun insert(message: Message)
 
+    @Insert
+    suspend fun insert(vararg messages: Message)
+
     @Update
     suspend fun update(message: Message)
 

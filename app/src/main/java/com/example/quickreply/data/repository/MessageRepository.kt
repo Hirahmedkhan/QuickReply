@@ -3,8 +3,9 @@ package com.example.quickreply.data.repository
 import androidx.lifecycle.LiveData
 import com.example.quickreply.data.database.MessageDao
 import com.example.quickreply.data.model.Message
+import javax.inject.Inject
 
-class MessageRepository(private val messageDao: MessageDao) {
+class MessageRepository @Inject constructor(private val messageDao: MessageDao) {
 
     val allMessages: LiveData<List<Message>> = messageDao.getAllMessages()
 

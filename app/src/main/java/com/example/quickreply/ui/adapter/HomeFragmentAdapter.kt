@@ -5,13 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.quickreply.R
+import com.example.quickreply.data.model.Message
 
 class HomeFragmentAdapter(
-    private var messageList: MutableList<String>,
-    private val onItemClick: (String, Int) -> Unit
-) : Adapter<HomeFragmentAdapter.MyViewHolder>() {
+    private val onItemClick: (Message, Int) -> Unit
+) : RecyclerView.Adapter<HomeFragmentAdapter.MyViewHolder>() {
+
+    private var messageList: List<Message> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -20,11 +21,10 @@ class HomeFragmentAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.tvMessage.text = messageList[position]
-
+        val message = messageList[position]
+        holder.tvMessage.text = message.message
         holder.itemView.setOnClickListener {
-            //messageList[position]......is position pe jo bhi data mojud hai usko fetch kr lo
-            onItemClick(messageList[position], position)
+            onItemClick(message, position)
         }
     }
 
@@ -36,11 +36,15 @@ class HomeFragmentAdapter(
         val tvMessage: TextView = itemView.findViewById(R.id.tvDisplayMessage)
     }
 
-    fun updateItem(position: Int, updatedText: String) {
+    fun submitList(newList: List<Message>) {
+        messageList = newList
+        notifyDataSetChanged()
+    }
+
+    fun updateItem(position: Int, updatedMessage: Message) {
         if (position in messageList.indices) {
-            messageList[position] = updatedText
+            (messageList as MutableList)[position] = updatedMessage
             notifyItemChanged(position)
         }
     }
 }
-

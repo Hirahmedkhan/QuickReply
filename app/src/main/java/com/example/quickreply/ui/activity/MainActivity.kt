@@ -8,7 +8,9 @@ import com.example.quickreply.R
 import com.example.quickreply.ui.adapter.ViewPagerAdapter
 import com.example.quickreply.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -32,30 +34,4 @@ class MainActivity : AppCompatActivity() {
             }
         }.attach()
     }
-
-    override fun onStart() {
-        super.onStart()
-        Log.i("Lifecycle", "Starting..")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.i("Lifecycle", "Paused")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.i("Lifecycle", "Resumed")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.i("Lifecycle", "Stopping...")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.i("Lifecycle", "Destroyed!")
-    }
-
 }

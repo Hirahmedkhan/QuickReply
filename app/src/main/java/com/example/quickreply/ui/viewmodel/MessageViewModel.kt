@@ -21,7 +21,7 @@ class MessageViewModel @Inject constructor(private val messageRepository: Messag
         }
     }
 
-    fun upDateMessage(message: Message) {
+    fun updateMessage(message: Message) {
         viewModelScope.launch {
             messageRepository.update(message)
         }

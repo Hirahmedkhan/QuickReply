@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.quickreply.R
 import com.example.quickreply.data.model.Message
@@ -30,6 +29,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
 
+        adapter = HomeFragmentAdapter { message, position ->
+            onMessageClick(message.message, position)
+        }
 
         binding.rvTextForAutoReply.adapter = adapter
         binding.rvTextForAutoReply.layoutManager = LinearLayoutManager(requireContext())
@@ -39,11 +41,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             selectedMessage?.let { message ->
                 val updatedMessage =
                     message.copy(message = binding.edtTextSetReplyMessage.text.toString())
-                messageViewModel.upDateMessage(updatedMessage)
+                messageViewModel.updateMessage(updatedMessage)
             }
         }
 
         messageViewModel.allMessages.observe(viewLifecycleOwner) { messages ->
+            adapter.submitList(messages)
         }
 
         binding.switchOption.setOnCheckedChangeListener { _, isChecked ->
