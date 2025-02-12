@@ -15,6 +15,12 @@ class MessageViewModel @Inject constructor(private val messageRepository: Messag
 
     val allMessages: LiveData<List<Message>> = messageRepository.allMessages
 
+    init {
+        viewModelScope.launch {
+            messageRepository.populateDatabaseIfNeeded()
+        }
+    }
+
     fun insertMessage(message: Message) {
         viewModelScope.launch {
             messageRepository.insert(message)

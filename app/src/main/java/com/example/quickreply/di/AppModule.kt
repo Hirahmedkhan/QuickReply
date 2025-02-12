@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.room.Room
 import com.example.quickreply.data.database.MessageDao
 import com.example.quickreply.data.database.MessageDatabase
-import com.example.quickreply.data.repository.MessageRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,11 +19,10 @@ object AppModule {
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): MessageDatabase {
         return Room.databaseBuilder(
-            context.applicationContext,
+            context,
             MessageDatabase::class.java,
             "message_database"
-        ).fallbackToDestructiveMigration()
-            .build()
+        ).build()
     }
 
     @Provides
