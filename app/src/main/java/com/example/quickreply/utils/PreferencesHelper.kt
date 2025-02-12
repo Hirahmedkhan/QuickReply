@@ -1,4 +1,4 @@
-package com.example.quickreply
+package com.example.quickreply.utils
 
 import android.content.Context
 import android.content.SharedPreferences

@@ -19,4 +19,7 @@
     <string name="button_description">Button Description</string>
     <string name="select_your_text">Select your text</string>
     <string name="recyclerview_item_layout_image">RecyclerView Item Layout Image</string>
+    <string name="todo">TODO</string>
+    <string name="title_here">Title Here</string>
+    <string name="this_is_a_description">This is a description.</string>
 </resources>

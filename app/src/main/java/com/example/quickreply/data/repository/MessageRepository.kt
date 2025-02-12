@@ -1,7 +1,7 @@
 package com.example.quickreply.data.repository
 
 import androidx.lifecycle.LiveData
-import com.example.quickreply.PreferencesHelper
+import com.example.quickreply.utils.PreferencesHelper
 import com.example.quickreply.data.database.MessageDao
 import com.example.quickreply.data.model.Message
 import javax.inject.Inject
