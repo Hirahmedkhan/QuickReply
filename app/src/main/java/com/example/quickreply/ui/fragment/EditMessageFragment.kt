@@ -23,8 +23,8 @@ class EditMessageFragment : BottomSheetDialogFragment(R.layout.fragment_edit_mes
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEditMessageBinding.bind(view)
 
+        val selectedMessage = arguments?.getString("selected_message") ?: ""
 
-        selectedMessage = arguments?.getString("selectedMessage", " ")
         binding.edtMessage.setText(selectedMessage)
 
         binding.btnSave.setOnClickListener {
@@ -35,7 +35,7 @@ class EditMessageFragment : BottomSheetDialogFragment(R.layout.fragment_edit_mes
                 dismiss()
 
             } else {
-                Toast.makeText(requireContext(), "Please fill in the required fielkd", LENGTH_SHORT)
+                Toast.makeText(requireContext(), "Please fill in the required field!", LENGTH_SHORT)
             }
         }
 

@@ -39,18 +39,19 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
 
         binding.btnEditMessage.setOnClickListener {
-
             val customMessage = binding.tvSetReplyMessage.text.toString().trim()
 
             if (customMessage.isNotEmpty()) {
                 val bundle = Bundle().apply {
                     putString("selected_message", customMessage)
                 }
-                val editMessageFragment = EditMessageFragment()
-                editMessageFragment.arguments = bundle
+                val editMessageFragment = EditMessageFragment().apply {
+                    arguments = bundle
+                }
                 editMessageFragment.show(parentFragmentManager, "editMessageFragment")
             }
         }
+
 
         messageViewModel.allMessages.observe(viewLifecycleOwner) { messages ->
             adapter.submitList(messages)
