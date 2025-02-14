@@ -22,7 +22,6 @@ class WhatsAppNotificationService : NotificationListenerService() {
         if (sbn == null) return
         if (sbn.packageName != WHATSAPP) return
 
-
         val extras = sbn.notification.extras
         val message = extras.getString("android.text") ?: return
         val senderName = extras.getString("android.title") ?: return

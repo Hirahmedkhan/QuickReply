@@ -39,10 +39,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
 
         binding.btnEditMessage.setOnClickListener {
-            selectedMessage?.let { message ->
+           /**selectedMessage?.let { message ->
                 val updatedMessage =
                     message.copy(message = binding.edtTextSetReplyMessage.text.toString())
                 messageViewModel.updateMessage(updatedMessage)
+            }*/
+
+            val customMessage = binding.edtTextSetReplyMessage.text.toString().trim()
+            if(customMessage.isNotEmpty()){
+                val newCustomMessage = Message(message = customMessage)
+                messageViewModel.insertMessage(newCustomMessage)
+
             }
         }
 
@@ -62,7 +69,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         selectedMessage = messageViewModel.allMessages.value?.get(position)
         selectedPosition = position
 
-        val sharedPreferences = requireContext().getSharedPreferences("AutoReplyPrefs", MODE_PRIVATE)
+        val sharedPreferences =
+            requireContext().getSharedPreferences("AutoReplyPrefs", MODE_PRIVATE)
         sharedPreferences.edit().putString("selected_auto_reply", message).apply()
     }
 
