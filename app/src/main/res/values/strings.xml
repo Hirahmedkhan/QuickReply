@@ -25,4 +25,6 @@
     <string name="auto_reply_to_everyone">Auto reply to Everyone.</string>
     <string name="auto_reply_messages_sent">Auto reply messages sent</string>
     <string name="quick_reply_text_to_send">Quick Reply Text to send</string>
+    <string name="edit_your_message">Edit your message</string>
+    <string name="save_message">Save Message</string>
 </resources>

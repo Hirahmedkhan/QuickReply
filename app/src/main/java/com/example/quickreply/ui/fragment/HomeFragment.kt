@@ -39,17 +39,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
 
         binding.btnEditMessage.setOnClickListener {
-           /**selectedMessage?.let { message ->
-                val updatedMessage =
-                    message.copy(message = binding.edtTextSetReplyMessage.text.toString())
-                messageViewModel.updateMessage(updatedMessage)
-            }*/
 
-            val customMessage = binding.edtTextSetReplyMessage.text.toString().trim()
-            if(customMessage.isNotEmpty()){
-                val newCustomMessage = Message(message = customMessage)
-                messageViewModel.insertMessage(newCustomMessage)
+            val customMessage = binding.tvSetReplyMessage.text.toString().trim()
 
+            if (customMessage.isNotEmpty()) {
+                val bundle = Bundle().apply {
+                    putString("selected_message", customMessage)
+                }
+                val editMessageFragment = EditMessageFragment()
+                editMessageFragment.arguments = bundle
+                editMessageFragment.show(parentFragmentManager, "editMessageFragment")
             }
         }
 
@@ -65,7 +64,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun onMessageClick(message: String, position: Int) {
-        binding.edtTextSetReplyMessage.setText(message)
+        binding.tvSetReplyMessage.setText(message)
         selectedMessage = messageViewModel.allMessages.value?.get(position)
         selectedPosition = position
 
