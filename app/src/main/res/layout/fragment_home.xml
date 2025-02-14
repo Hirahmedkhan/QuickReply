@@ -38,7 +38,6 @@
                 android:id="@+id/tvONOFF"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:text="@string/on"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/switchOption"
@@ -76,21 +75,15 @@
             android:layout_height="match_parent"
             android:padding="@dimen/_1sdp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textFieldCard2"
-                android:layout_width="match_parent"
+
+            <EditText
+                android:id="@+id/edtTextSetReplyMessage"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/quick_reply_text"
+                android:hint="@string/quick_reply_text_to_send"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtTextSetReplyMessage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </com.google.android.material.textfield.TextInputLayout>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnEditMessage"
@@ -99,6 +92,7 @@
                 android:background="?android:attr/selectableItemBackground"
                 android:drawableLeft="@drawable/edit"
                 android:text=""
+                app:layout_constraintStart_toEndOf="@+id/edtTextSetReplyMessage"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

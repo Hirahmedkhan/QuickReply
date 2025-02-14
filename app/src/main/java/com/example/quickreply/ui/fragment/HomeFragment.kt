@@ -1,5 +1,6 @@
 package com.example.quickreply.ui.fragment
 
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -60,36 +61,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.edtTextSetReplyMessage.setText(message)
         selectedMessage = messageViewModel.allMessages.value?.get(position)
         selectedPosition = position
+
+        val sharedPreferences = requireContext().getSharedPreferences("AutoReplyPrefs", MODE_PRIVATE)
+        sharedPreferences.edit().putString("selected_auto_reply", message).apply()
     }
 
     private fun openNotificationSettings() {
         val intent = Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS")
         startActivity(intent)
     }
-
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        return when (item.itemId) {
-//            R.id.action_notifications -> {
-//                // Handle notifications action
-//                true
-//            }
-//            R.id.action_send_message -> {
-//                // Handle send message action
-//                true
-//            }
-//            R.id.action_more -> {
-//                // Handle more (three dots) action
-//                true
-//            }
-//            R.id.action_settings -> {
-//                // Handle settings action
-//                true
-//            }
-//            R.id.action_account -> {
-//                // Handle account settings action
-//                true
-//            }
-//            else -> super.onOptionsItemSelected(item)
-//        }
-//    }
 }

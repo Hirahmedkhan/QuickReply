@@ -50,10 +50,14 @@ class WhatsAppNotificationService : NotificationListenerService() {
     }
 
     private fun sendReplyToNotification(sbn: StatusBarNotification, replyText: String) {
+        val sharedPreferences = getSharedPreferences("AutoReplyPrefs", MODE_PRIVATE)
+        val replyMessage = sharedPreferences.getString("selected_auto_reply", "Hello, Auto Reply Message") ?: "Hello, Auto Reply Message"
+
+
         val actions = sbn.notification.actions
         actions?.forEach { action ->
             if (action?.title?.toString()?.contains("Reply", true) == true) {
-                sendReply(action, replyText)
+                sendReply(action, replyMessage)
             }
         }
     }

@@ -23,4 +23,6 @@
     <string name="title_here">Title Here</string>
     <string name="this_is_a_description">This is a description.</string>
     <string name="auto_reply_to_everyone">Auto reply to Everyone.</string>
+    <string name="auto_reply_messages_sent">Auto reply messages sent</string>
+    <string name="quick_reply_text_to_send">Quick Reply Text to send</string>
 </resources>
