@@ -1,5 +1,7 @@
 package com.example.quickreply.ui.viewmodel
 
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -32,4 +34,11 @@ class MessageViewModel @Inject constructor(private val messageRepository: Messag
             messageRepository.update(message)
         }
     }
+
+    fun deleteMessage(message: Message) {
+        viewModelScope.launch {
+            messageRepository.deleteMessage(message)
+        }
+    }
+
 }

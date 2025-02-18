@@ -17,7 +17,6 @@ class EditMessageFragment : BottomSheetDialogFragment(R.layout.fragment_edit_mes
 
     private lateinit var binding: FragmentEditMessageBinding
     private val viewModel: MessageViewModel by viewModels()
-    private var selectedMessage: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,10 +35,17 @@ class EditMessageFragment : BottomSheetDialogFragment(R.layout.fragment_edit_mes
 
             } else {
                 Toast.makeText(requireContext(), "Please fill in the required field!", LENGTH_SHORT)
+                    .show()
             }
         }
 
-    }
+        binding.btnDelete.setOnClickListener {
+            selectedMessage.let { message ->
+                viewModel.deleteMessage(Message(id= 0, message = selectedMessage ))
+                dismiss()
+            } ?: Toast.makeText(requireContext(), "No message selected", Toast.LENGTH_SHORT).show()
+        }
 
+    }
 
 }

@@ -20,6 +20,10 @@ class MessageRepository @Inject constructor(
         messageDao.update(message)
     }
 
+    suspend fun deleteMessage(message: Message) {
+        message.id?.let { messageDao.deleteMessage(it) }
+    }
+
     suspend fun populateDatabaseIfNeeded() {
         if (!preferencesHelper.isDatabasePopulated()) {
             messageDao.insertAll(

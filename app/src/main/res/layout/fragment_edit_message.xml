@@ -17,5 +17,12 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/whatsappdarkgreen"
         android:text="@string/save_message" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/whatsappdarkgreen"
+        android:text="Delete Message" />
 </LinearLayout>
 
