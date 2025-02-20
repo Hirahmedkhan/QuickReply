@@ -12,7 +12,7 @@ class HomeFragmentAdapter(
     private val onItemClick: (Message, Int) -> Unit
 ) : RecyclerView.Adapter<HomeFragmentAdapter.MyViewHolder>() {
 
-    private var messageList: List<Message> = emptyList()
+    private var messageList: MutableList<Message> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -37,14 +37,22 @@ class HomeFragmentAdapter(
     }
 
     fun submitList(newList: List<Message>) {
-        messageList = newList
+        messageList = newList.toMutableList()
         notifyDataSetChanged()
     }
 
     fun updateItem(position: Int, updatedMessage: Message) {
         if (position in messageList.indices) {
-            (messageList as MutableList)[position] = updatedMessage
+            messageList[position] = updatedMessage
             notifyItemChanged(position)
         }
     }
+
+    fun deleteItem(position: Int) {
+        if (position in messageList.indices) {
+            messageList.removeAt(position)
+            notifyItemRemoved(position)
+        }
+    }
+
 }

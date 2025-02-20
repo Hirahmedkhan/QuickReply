@@ -43,7 +43,7 @@ class EditMessageFragment : BottomSheetDialogFragment(R.layout.fragment_edit_mes
             selectedMessage.let { message ->
                 viewModel.deleteMessage(Message(id= 0, message = selectedMessage ))
                 dismiss()
-            } ?: Toast.makeText(requireContext(), "No message selected", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }

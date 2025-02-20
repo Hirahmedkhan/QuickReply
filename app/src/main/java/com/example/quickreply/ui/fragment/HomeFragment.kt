@@ -45,13 +45,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 val bundle = Bundle().apply {
                     putString("selected_message", customMessage)
                 }
+
                 val editMessageFragment = EditMessageFragment().apply {
                     arguments = bundle
                 }
                 editMessageFragment.show(parentFragmentManager, "editMessageFragment")
             }
         }
-
 
         messageViewModel.allMessages.observe(viewLifecycleOwner) { messages ->
             adapter.submitList(messages)
@@ -72,6 +72,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val sharedPreferences =
             requireContext().getSharedPreferences("AutoReplyPrefs", MODE_PRIVATE)
         sharedPreferences.edit().putString("selected_auto_reply", message).apply()
+    }
+
+    fun deleteMessageFromAdapter(message: Message, position: Int) {
+        messageViewModel.allMessages.value?.let {messages ->
+            if (position in messages.indices){
+                messageViewModel.deleteMessage(message)
+                adapter.deleteItem(position)
+            }
+        }
+
     }
 
     private fun openNotificationSettings() {
