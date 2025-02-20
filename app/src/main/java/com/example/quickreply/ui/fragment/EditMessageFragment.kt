@@ -43,8 +43,8 @@ class EditMessageFragment : BottomSheetDialogFragment(R.layout.fragment_edit_mes
             val messageToDelete =
                 arguments?.getString("selected_message") ?: return@setOnClickListener
             messageViewModel.deleteMessageByContent(messageToDelete)
+            parentFragmentManager.setFragmentResult("edit_message_result", Bundle())
             dismiss()
         }
     }
-
 }
