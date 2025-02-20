@@ -20,8 +20,8 @@ class MessageRepository @Inject constructor(
         messageDao.update(message)
     }
 
-    suspend fun deleteMessage(message: Message) {
-        message.id?.let { messageDao.deleteMessage(it) }
+    suspend fun deleteMessageByContent(messageText: String) {
+        messageDao.deleteMessageByContent(messageText)
     }
 
     suspend fun populateDatabaseIfNeeded() {

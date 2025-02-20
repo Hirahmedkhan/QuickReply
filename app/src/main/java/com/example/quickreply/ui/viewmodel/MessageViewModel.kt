@@ -29,16 +29,9 @@ class MessageViewModel @Inject constructor(private val messageRepository: Messag
         }
     }
 
-    fun updateMessage(message: Message) {
+    fun deleteMessageByContent(messageText: String) {
         viewModelScope.launch {
-            messageRepository.update(message)
+            messageRepository.deleteMessageByContent(messageText)
         }
     }
-
-    fun deleteMessage(message: Message) {
-        viewModelScope.launch {
-            messageRepository.deleteMessage(message)
-        }
-    }
-
 }

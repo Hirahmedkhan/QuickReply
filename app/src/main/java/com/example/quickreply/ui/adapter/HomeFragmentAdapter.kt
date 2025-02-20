@@ -40,19 +40,4 @@ class HomeFragmentAdapter(
         messageList = newList.toMutableList()
         notifyDataSetChanged()
     }
-
-    fun updateItem(position: Int, updatedMessage: Message) {
-        if (position in messageList.indices) {
-            messageList[position] = updatedMessage
-            notifyItemChanged(position)
-        }
-    }
-
-    fun deleteItem(position: Int) {
-        if (position in messageList.indices) {
-            messageList.removeAt(position)
-            notifyItemRemoved(position)
-        }
-    }
-
 }

@@ -19,8 +19,8 @@ interface MessageDao {
     @Update
     suspend fun update(message: Message)
 
-    @Query("DELETE FROM message WHERE id = :messageId")
-    suspend fun deleteMessage(messageId: Int)
+    @Query("DELETE FROM message WHERE message_text = :messageText")
+    suspend fun deleteMessageByContent(messageText: String)
 
     @Query("SELECT * FROM message")
     fun getAllMessages(): LiveData<List<Message>>

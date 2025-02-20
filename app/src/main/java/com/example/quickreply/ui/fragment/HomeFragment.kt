@@ -74,16 +74,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         sharedPreferences.edit().putString("selected_auto_reply", message).apply()
     }
 
-    fun deleteMessageFromAdapter(message: Message, position: Int) {
-        messageViewModel.allMessages.value?.let {messages ->
-            if (position in messages.indices){
-                messageViewModel.deleteMessage(message)
-                adapter.deleteItem(position)
-            }
-        }
-
-    }
-
     private fun openNotificationSettings() {
         val intent = Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS")
         startActivity(intent)

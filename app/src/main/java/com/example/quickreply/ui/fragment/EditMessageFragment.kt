@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class EditMessageFragment : BottomSheetDialogFragment(R.layout.fragment_edit_message) {
 
     private lateinit var binding: FragmentEditMessageBinding
-    private val viewModel: MessageViewModel by viewModels()
+    private val messageViewModel: MessageViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,7 +30,7 @@ class EditMessageFragment : BottomSheetDialogFragment(R.layout.fragment_edit_mes
             val updatedMessage = binding.edtMessage.text.toString().trim()
             if (updatedMessage.isNotEmpty()) {
                 val newMessage = Message(id = 0, message = updatedMessage)
-                viewModel.insertMessage(newMessage)
+                messageViewModel.insertMessage(newMessage)
                 dismiss()
 
             } else {
@@ -40,12 +40,11 @@ class EditMessageFragment : BottomSheetDialogFragment(R.layout.fragment_edit_mes
         }
 
         binding.btnDelete.setOnClickListener {
-            selectedMessage.let { message ->
-                viewModel.deleteMessage(Message(id= 0, message = selectedMessage ))
-                dismiss()
-            }
+            val messageToDelete =
+                arguments?.getString("selected_message") ?: return@setOnClickListener
+            messageViewModel.deleteMessageByContent(messageToDelete)
+            dismiss()
         }
-
     }
 
 }
