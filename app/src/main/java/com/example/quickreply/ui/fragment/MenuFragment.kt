@@ -19,7 +19,7 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
 
 
         val itemList = listOf(
-            ItemModel("Supported Apps", "This is description for item 1", R.drawable.apps),
+            ItemModel("Supported Apps", "This is description for item 1", R.drawable.apps, R.id.action_dashboardFragment_to_supportedAppsFragment2),
             ItemModel("Custom Reply", "This is description for item 2", R.drawable.custom_reply),
             ItemModel("Spreadsheet", "This is description for item 3", R.drawable.spreadsheet_2),
             ItemModel("Welcome Message", "This is description for item 4", R.drawable.welcome_message),
@@ -28,7 +28,9 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
             ItemModel("Notes", "This is description for item 7", R.drawable.notes)
         )
 
-        val adapter = ItemAdapter(itemList)
+        val adapter = ItemAdapter(itemList){
+
+        }
         binding.rvItemList.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvItemList.adapter = adapter
 

@@ -4,4 +4,5 @@ data class ItemModel (
     val title: String,
     val description: String,
     val icon: Int,
+    val fragmentId: Int,
 )
