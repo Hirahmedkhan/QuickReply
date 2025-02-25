@@ -54,7 +54,7 @@ class WhatsAppNotificationService : NotificationListenerService() {
 
 
         val actions = sbn.notification.actions
-        actions?.forEach { action ->
+        actions?.forEach {action ->
             if (action?.title?.toString()?.contains("Reply", true) == true) {
                 sendReply(action, replyMessage)
             }

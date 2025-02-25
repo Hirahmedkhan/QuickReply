@@ -17,7 +17,8 @@ class StatisticsFragment : Fragment(R.layout.fragment_statistics) {
         binding = FragmentStatisticsBinding.bind(view)
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
     }
 
