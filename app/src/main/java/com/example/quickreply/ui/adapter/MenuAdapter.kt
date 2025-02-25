@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.quickreply.data.model.ItemModel
 import com.example.quickreply.databinding.MenuRvItemViewBinding
 
-class ItemAdapter(
-    private val itemList: List<ItemModel>, private val onItemClick: () -> Unit
-) : RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
+class MenuAdapter(
+    private val itemList: List<ItemModel>, private val onItemClick: (Int) -> Unit
+) : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: MenuRvItemViewBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -24,7 +24,7 @@ class ItemAdapter(
         holder.binding.rvDescription.text = item.description
         holder.binding.imgIcon.setImageResource(item.icon)
         holder.itemView.setOnClickListener {
-            onItemClick()
+            onItemClick(item.fragmentId)
         }
     }
 

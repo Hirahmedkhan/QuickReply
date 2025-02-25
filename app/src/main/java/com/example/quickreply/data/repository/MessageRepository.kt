@@ -9,7 +9,6 @@ import javax.inject.Inject
 class MessageRepository @Inject constructor(
     private val messageDao: MessageDao, private val preferencesHelper: PreferencesHelper
 ) {
-
     val allMessages: LiveData<List<Message>> = messageDao.getAllMessages()
 
     suspend fun insert(message: Message) {

@@ -1,7 +1,5 @@
 package com.example.quickreply.ui.viewmodel
 
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -19,7 +17,13 @@ class MessageViewModel @Inject constructor(private val messageRepository: Messag
 
     init {
         viewModelScope.launch {
-            messageRepository.populateDatabaseIfNeeded()
+            try {
+                println("Checking database population status...")
+                messageRepository.populateDatabaseIfNeeded()
+                println("Database population function executed")
+            } catch (e: Exception) {
+                println("Error populating database: ${e.message}")
+            }
         }
     }
 

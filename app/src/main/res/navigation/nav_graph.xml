@@ -1,21 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph"
+    xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/dashboardFragment">
 
     <fragment
         android:id="@+id/dashboardFragment"
         android:name="com.example.quickreply.ui.fragment.DashboardFragment"
-        android:label="DashboardFragment">
-        <action
-            android:id="@+id/action_dashboardFragment_to_supportedAppsFragment2"
-            app:destination="@id/supportedAppsFragment" />
-    </fragment>
-
+        tools:layout="@layout/fragment_dashboard" />
     <fragment
         android:id="@+id/supportedAppsFragment"
         android:name="com.example.quickreply.ui.fragment.SupportedAppsFragment"
-        android:label="SupportedAppsFragment">
+        android:label="SupportedAppsFragment"
+        tools:layout="@layout/fragment_supported_apps">
+    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/connectToServerFragment"-->
+<!--        android:name="com.example.quickreply.ui.fragment.ConnectToServerFragment"-->
+<!--        android:label="fragment_connect_to_server"-->
+<!--        tools:layout="@layout/fragment_connect_to_server" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/customReplyFragment"-->
+<!--        android:name="com.example.quickreply.ui.fragment.CustomReplyFragment"-->
+<!--        android:label="fragment_custom_reply"-->
+<!--        tools:layout="@layout/fragment_custom_reply" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/menuReplyFragment"-->
+<!--        android:name="com.example.quickreply.ui.fragment.MenuReplyFragment"-->
+<!--        android:label="fragment_menu_reply"-->
+<!--        tools:layout="@layout/fragment_menu_reply" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/welcomeMessageFragment"-->
+<!--        android:name="com.example.quickreply.ui.fragment.WelcomeMessageFragment"-->
+<!--        android:label="fragment_welcome_message"-->
+<!--        tools:layout="@layout/fragment_welcome_message" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/spreadsheetFragment"-->
+<!--        android:name="com.example.quickreply.ui.fragment.SpreadsheetFragment"-->
+<!--        android:label="fragment_spreadsheet"-->
+<!--        tools:layout="@layout/fragment_spreadsheet" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/notesFragment"-->
+<!--        android:name="com.example.quickreply.ui.fragment.NotesFragment"-->
+<!--        android:label="fragment_notes"-->
+<!--        tools:layout="@layout/fragment_notes" />-->
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.quickreply.ui.fragment.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+<!--        <action-->
+<!--            android:id="@+id/action_menuFragment_to_spreadsheetFragment"-->
+<!--            app:destination="@id/spreadsheetFragment" />-->
+<!--        <action-->
+<!--            android:id="@+id/action_menuFragment_to_welcomeMessageFragment"-->
+<!--            app:destination="@id/welcomeMessageFragment" />-->
+<!--        <action-->
+<!--            android:id="@+id/action_menuFragment_to_connectToServerFragment"-->
+<!--            app:destination="@id/connectToServerFragment" />-->
+<!--        <action-->
+<!--            android:id="@+id/action_menuFragment_to_menuReplyFragment"-->
+<!--            app:destination="@id/menuReplyFragment" />-->
+<!--        <action-->
+<!--            android:id="@+id/action_menuFragment_to_notesFragment"-->
+<!--            app:destination="@id/notesFragment" />-->
+<!--        <action-->
+<!--            android:id="@+id/action_menuFragment_to_supportedAppsFragment"-->
+<!--            app:destination="@id/supportedAppsFragment" />-->
+<!--        <action-->
+<!--            android:id="@+id/action_menuFragment_to_customReplyFragment"-->
+<!--            app:destination="@id/customReplyFragment" />-->
+<!--        <action-->
+<!--            android:id="@+id/action_menuFragment_to_menuReplyFragment2"-->
+<!--            app:destination="@id/menuReplyFragment" />-->
+        <action
+            android:id="@+id/action_menuFragment_to_supportedAppsFragment"
+            app:destination="@id/supportedAppsFragment" />
     </fragment>
 </navigation>
