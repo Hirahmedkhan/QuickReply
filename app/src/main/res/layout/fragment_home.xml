@@ -75,11 +75,11 @@
             android:layout_height="match_parent"
             android:padding="@dimen/_1sdp">
 
-
             <TextView
                 android:id="@+id/tvSetReplyMessage"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:hint="@string/quick_reply_text_to_send"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -89,12 +89,13 @@
                 android:id="@+id/btnEditMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_100sdp"
                 android:background="?android:attr/selectableItemBackground"
                 android:drawableLeft="@drawable/edit"
                 android:text=""
-                app:layout_constraintStart_toEndOf="@+id/tvSetReplyMessage"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvSetReplyMessage"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -115,7 +116,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_190sdp">
+            android:layout_height="@dimen/_190sdp"
+            app:layout_constraintBottom_toTopOf="@+id/rvTextForAutoReply">
 
             <TextView
                 android:id="@+id/tvSelectMessage"
@@ -124,21 +126,22 @@
                 android:layout_marginStart="@dimen/_13sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:text="@string/select_your_text"
-                app:layout_constraintBottom_toTopOf="@+id/rvTextForAutoReply"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvTextForAutoReply"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_15sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvSelectMessage"
                 tools:listitem="@layout/home_rv_item_view_layout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

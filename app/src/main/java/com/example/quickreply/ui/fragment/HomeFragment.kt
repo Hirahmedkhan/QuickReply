@@ -1,6 +1,5 @@
 package com.example.quickreply.ui.fragment
 
-import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -63,7 +62,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
         }
 
-        parentFragmentManager.setFragmentResultListener("edit_message_result", viewLifecycleOwner) { _, _ ->
+        parentFragmentManager.setFragmentResultListener(
+            "edit_message_result", viewLifecycleOwner
+        ) { _, _ ->
             binding.tvSetReplyMessage.text = ""
         }
     }

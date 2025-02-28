@@ -27,4 +27,6 @@
     <string name="quick_reply_text_to_send">Quick Reply Text to send</string>
     <string name="edit_your_message">Edit your message</string>
     <string name="save_message">Save Message</string>
+    <string name="google_signin">Google Signin</string>
+    <string name="google">Google</string>
 </resources>
