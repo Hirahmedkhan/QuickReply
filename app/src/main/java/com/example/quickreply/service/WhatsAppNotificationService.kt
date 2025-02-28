@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import android.util.Log
+import com.example.quickreply.utils.PreferencesHelper
 
 class WhatsAppNotificationService : NotificationListenerService() {
 
@@ -49,12 +50,12 @@ class WhatsAppNotificationService : NotificationListenerService() {
     }
 
     private fun sendReplyToNotification(sbn: StatusBarNotification, replyText: String) {
-        val sharedPreferences = getSharedPreferences("AutoReplyPrefs", MODE_PRIVATE)
-        val replyMessage = sharedPreferences.getString("selected_auto_reply", "Hello, Auto Reply Message") ?: "Hello, Auto Reply Message"
 
+        val replyMessage = PreferencesHelper(applicationContext).getMessage()
 
-        val actions = sbn.notification.actions
-        actions?.forEach {action ->
+        val actions = sbn.notification.actions ?: return
+
+        actions.forEach { action ->
             if (action?.title?.toString()?.contains("Reply", true) == true) {
                 sendReply(action, replyMessage)
             }

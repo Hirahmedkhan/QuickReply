@@ -12,6 +12,7 @@ import com.example.quickreply.data.model.Message
 import com.example.quickreply.databinding.FragmentHomeBinding
 import com.example.quickreply.ui.adapter.HomeFragmentAdapter
 import com.example.quickreply.ui.viewmodel.MessageViewModel
+import com.example.quickreply.utils.PreferencesHelper
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -61,13 +62,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 openNotificationSettings()
             }
         }
-        parentFragmentManager.addFragmentOnAttachListener { _, fragment ->
-            if (fragment is EditMessageFragment) {
-                fragment.dialog?.setOnDismissListener {
-                    binding.tvSetReplyMessage.text = ""
-                }
-            }
-        }
 
         parentFragmentManager.setFragmentResultListener("edit_message_result", viewLifecycleOwner) { _, _ ->
             binding.tvSetReplyMessage.text = ""
@@ -79,9 +73,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         selectedMessage = messageViewModel.allMessages.value?.get(position)
         selectedPosition = position
 
-        val sharedPreferences =
-            requireContext().getSharedPreferences("AutoReplyPrefs", MODE_PRIVATE)
-        sharedPreferences.edit().putString("selected_auto_reply", message).apply()
+        PreferencesHelper(requireContext()).setMessage(message)
     }
 
     private fun openNotificationSettings() {

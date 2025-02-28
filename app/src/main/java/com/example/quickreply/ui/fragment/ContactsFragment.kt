@@ -13,6 +13,5 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentContactsBinding.bind(view)
-
     }
 }
